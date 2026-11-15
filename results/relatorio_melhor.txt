@@ -1,0 +1,29 @@
+Melhor configuração:
+id                      281
+max_ausentes              6
+n_instancias           3337
+imputador       knn_imputer
+scaler             standard
+k                         3
+pesos              distance
+metrica           manhattan
+acc                0.747631
+acc_std            0.011674
+bal_acc            0.740804
+f1_macro           0.725893
+f1_std             0.030218
+seg                    2.07
+
+Instâncias usadas: 3337
+
+                            precision    recall  f1-score   support
+
+      Agreste Pernambucano      0.768     0.778     0.773      1114
+         Mata Pernambucana      0.744     0.742     0.743       752
+   Metropolitana do Recife      0.811     0.820     0.816       367
+       Sertão Pernambucano      0.763     0.726     0.744       836
+São Francisco Pernambucano      0.564     0.612     0.587       268
+
+                  accuracy                          0.748      3337
+                 macro avg      0.730     0.736     0.732      3337
+              weighted avg      0.750     0.748     0.749      3337
