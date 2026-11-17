@@ -33,7 +33,7 @@ Execução do Randell no Colab (15/11): melhor F1 macro **0,726**, acurácia 0,7
 
 ## Pendências
 
-- [ ] Confirmar com a APAC se "-" é "sem medição" ou "zero chuva" (muda a imputação)
+- [ ] Confirmar com a APAC o que "-" significa. Indício: não existe nenhum 0 no dataset (mínimo 0,1 mm) e os "-" se concentram nos meses secos de cada região (set: 76% no Sertão × 19% no Agreste). Provável "chuva zero" nas linhas parciais e "posto sem dados" nas 100% vazias. Testar imputar zero (issue #5).
 - [ ] Testar outros limites de ausentes (4, 8, 10)
 - [ ] Balanceamento para o São Francisco (Aula 8)
 - [ ] Seleção de features (Aula 7)
