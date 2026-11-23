@@ -25,5 +25,5 @@ Instâncias usadas: 3337
 São Francisco Pernambucano      0.564     0.612     0.587       268
 
                   accuracy                          0.748      3337
-                 macro avg      0.730     0.736     0.732      3337z
+                 macro avg      0.730     0.736     0.732      3337
               weighted avg      0.750     0.748     0.749      3337
