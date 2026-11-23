@@ -11,13 +11,14 @@ Projeto da disciplina CIN0208 (profa. Juscimara G. Avelino): **classificar a mes
 
 ## Estrutura
 ```
-data/raw/         dados brutos (não editar)
-notebooks/        01_EDA_Checkpoint.ipynb (EDA)
-src/              data.py (carga/preparo), meso_map.py, experimentos.py
-results/          experimentos_knn.csv (saída)
-relatorio/        relatório e slides
+data/raw/        dados brutos (não editar)
+docs/            decisões, divisão de temas e issues detalhadas
+notebooks/       01_EDA_Checkpoint (EDA)
+                 02_Modelagem_KNN (protocolo principal, 360 experimentos)
+                 03_Experimentos_Extras (imputar 0, outliers, escalas, seleção, PCA, balanceamento)
+src/             data.py, meso_map.py, experimentos.py
+results/         experimentos_knn.csv, matriz_confusao, instancias_incorretas.csv, relatorio_melhor.txt
 ```
-
 ## Como rodar
 ```bash
 pip install -r requirements.txt
@@ -29,6 +30,18 @@ python src/experimentos.py            # 360 experimentos + matriz de confusão -
 - **StratifiedGroupKFold (5) agrupando por posto**: o mesmo posto em anos diferentes não aparece em treino e teste (evita vazamento).
 - Classes desbalanceadas (Sertão ~32%, São Francisco ~8%) → métrica principal **F1 macro** + balanced accuracy.
 - Grade: 2 imputações × 3 scalers × 5 valores de k × 2 pesos × 3 distâncias × 2 limites de ausentes (sem limite ou ≤ 6 meses vazios) = **360 experimentos**.
+
+## Resultados
+
+Validação por posto (StratifiedGroupKFold, 5 folds, seed 42). Baseline (Dummy): acurácia 0,33 e F1 macro 0,10.
+
+| Modelo | F1 macro | Acurácia | F1 São Francisco |
+|---|---|---|---|
+| Melhor KNN (KNNImputer, ≤6 meses ausentes, StandardScaler, k=3, distance, manhattan) | 0,726 | 0,748 | 0,587 |
+
+Extras testados no notebook 03: imputar "-" como zero (F1 0,745, hipótese ainda sem confirmação da APAC), indicador de ausência (0,680), seleção de atributos e PCA (sem ganho) e balanceamento (aumenta o recall do São Francisco, mas reduz o F1 macro).
+
+Os erros se concentram entre regiões vizinhas: Agreste e Mata, Agreste e Sertão, Sertão e São Francisco.
 
 ## Documentação
 - `docs/decisoes.md` — decisões de método, resultados registrados e pendências.
